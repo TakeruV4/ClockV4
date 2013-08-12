@@ -8,9 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+
+//@class AlermManager;
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate>{
+    //@private AlermManager *alermManager;
+}
+
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) NSMutableArray *subTables;
+//@property (nonatomic, retain) AlermManager *alermManager;
 
 @end

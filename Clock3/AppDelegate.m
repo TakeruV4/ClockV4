@@ -8,9 +8,10 @@
 
 #import "AppDelegate.h"
 
-
-
 @implementation AppDelegate
+
+//@synthesize alermManager;
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -21,6 +22,20 @@
         splitViewController.delegate = (id)navigationController.topViewController;
     }
     self.subTables = [[NSMutableArray alloc]init];
+    
+    
+	NSLog(@"データロード");
+	// アラームを管理するマネージャを作成
+	//alermManager = [[AlermManager alloc] init];
+    NSMutableArray *loadArray = [[NSMutableArray alloc]init];
+    
+	// 前回の状態を復元
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [defaults objectForKey:@"LOAD_ARRAY"];
+    loadArray = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+	if (loadArray) {
+		[self.subTables arrayByAddingObjectsFromArray:loadArray];
+	}
     return YES;
 }
 							
@@ -34,6 +49,16 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    NSLog(@"データセーブ");
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.subTables];
+    [defaults setObject:data forKey:@"LOAD_ARRAY"];
+    /*
+	[defaults setObject:self.alermManager.alermObjects
+				 forKey:@"ALERM_OBJECTS"];
+	[defaults synchronize];
+     */
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -49,6 +74,19 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    	NSLog(@"データロード");
+    self.subTables = [[NSMutableArray alloc]init];
+    
+    NSMutableArray *loadArray = [[NSMutableArray alloc]init];
+    
+	// 前回の状態を復元
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [defaults objectForKey:@"LOAD_ARRAY"];
+    loadArray = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+	if (loadArray) {
+		[self.subTables arrayByAddingObjectsFromArray:loadArray];
+	}
+	[defaults synchronize];
 }
 
 @end

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0014858C177DE2EF00A04BEB /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0014858B177DE2EF00A04BEB /* DatePickerViewController.m */; };
 		00148592177F316600A04BEB /* UINavigationController+Portrait.m in Sources */ = {isa = PBXBuildFile; fileRef = 00148591177F316600A04BEB /* UINavigationController+Portrait.m */; };
+		001D6FD517B8DD5F00C9A548 /* AlermManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 001D6FD417B8DD5F00C9A548 /* AlermManager.m */; };
+		001D6FD817B8DDCE00C9A548 /* SystemValueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 001D6FD717B8DDCE00C9A548 /* SystemValueManager.m */; };
 		00212BC61775B71C00224459 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00212BC51775B71C00224459 /* UIKit.framework */; };
 		00212BC81775B71C00224459 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00212BC71775B71C00224459 /* Foundation.framework */; };
 		00212BCA1775B71C00224459 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00212BC91775B71C00224459 /* CoreGraphics.framework */; };
@@ -33,6 +35,10 @@
 		0014858B177DE2EF00A04BEB /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		00148590177F316600A04BEB /* UINavigationController+Portrait.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Portrait.h"; sourceTree = "<group>"; };
 		00148591177F316600A04BEB /* UINavigationController+Portrait.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Portrait.m"; sourceTree = "<group>"; };
+		001D6FD317B8DD5F00C9A548 /* AlermManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlermManager.h; sourceTree = "<group>"; };
+		001D6FD417B8DD5F00C9A548 /* AlermManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlermManager.m; sourceTree = "<group>"; };
+		001D6FD617B8DDCE00C9A548 /* SystemValueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemValueManager.h; sourceTree = "<group>"; };
+		001D6FD717B8DDCE00C9A548 /* SystemValueManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemValueManager.m; sourceTree = "<group>"; };
 		00212BC21775B71C00224459 /* Clock3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clock3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00212BC51775B71C00224459 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		00212BC71775B71C00224459 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -117,6 +123,10 @@
 				00212BE71775B71C00224459 /* DetailViewController.m */,
 				00212BEE1775B8A200224459 /* SubTableView.h */,
 				00212BEF1775B8A200224459 /* SubTableView.m */,
+				001D6FD317B8DD5F00C9A548 /* AlermManager.h */,
+				001D6FD417B8DD5F00C9A548 /* AlermManager.m */,
+				001D6FD617B8DDCE00C9A548 /* SystemValueManager.h */,
+				001D6FD717B8DDCE00C9A548 /* SystemValueManager.m */,
 				00212BCC1775B71C00224459 /* Supporting Files */,
 				00212BF91776CA5F00224459 /* CustumCell.h */,
 				00212BFA1776CA5F00224459 /* CustumCell.m */,
@@ -220,6 +230,8 @@
 				0014858C177DE2EF00A04BEB /* DatePickerViewController.m in Sources */,
 				00148592177F316600A04BEB /* UINavigationController+Portrait.m in Sources */,
 				009A12901789A9CD00294447 /* MasterCustumCell.m in Sources */,
+				001D6FD517B8DD5F00C9A548 /* AlermManager.m in Sources */,
+				001D6FD817B8DDCE00C9A548 /* SystemValueManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
