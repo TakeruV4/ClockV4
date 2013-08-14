@@ -18,6 +18,8 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) NSMutableArray *subTables;
+@property (strong, nonatomic) NSMutableArray *masterTables;
+
 //@property (nonatomic, retain) AlermManager *alermManager;
 
 @end

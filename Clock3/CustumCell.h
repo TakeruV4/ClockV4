@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CustumCell : UITableViewCell{
-
+@interface CustumCell : UITableViewCell <NSCoding>{
+    
 }
+@property (nonatomic) BOOL SubSwitch;
 -(void)setTime:(NSDate*)date;
 
 @end

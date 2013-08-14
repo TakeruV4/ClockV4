@@ -13,6 +13,7 @@
 //@synthesize alermManager;
 
 
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
@@ -22,20 +23,33 @@
         splitViewController.delegate = (id)navigationController.topViewController;
     }
     self.subTables = [[NSMutableArray alloc]init];
-    
-    
+    //self.masterTables = [[NSMutableArray alloc]init];
+    /*
 	NSLog(@"データロード");
 	// アラームを管理するマネージャを作成
 	//alermManager = [[AlermManager alloc] init];
-    NSMutableArray *loadArray = [[NSMutableArray alloc]init];
     
 	// 前回の状態を復元
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSData *data = [defaults objectForKey:@"LOAD_ARRAY"];
+    NSData *Mdata = [defaults objectForKey:@"M_ARRAY"];
+    NSData *Sdata = [defaults objectForKey:@"S_ARRAY"];
+    
+    if(Mdata){
+        self.masterTables = [NSKeyedUnarchiver unarchiveObjectWithData:Mdata];
+    }
+
+    if(Sdata){
+        self.subTables = [NSKeyedUnarchiver unarchiveObjectWithData:Sdata];
+    }
+    */
+    
+    
+    /*
     loadArray = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 	if (loadArray) {
 		[self.subTables arrayByAddingObjectsFromArray:loadArray];
 	}
+     */
     return YES;
 }
 							
@@ -52,8 +66,20 @@
     
     NSLog(@"データセーブ");
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.subTables];
-    [defaults setObject:data forKey:@"LOAD_ARRAY"];
+    NSData *Mdata = [NSKeyedArchiver archivedDataWithRootObject:self.masterTables];
+    NSData *Sdata = [NSKeyedArchiver archivedDataWithRootObject:self.subTables];
+
+
+    
+    if(self.masterTables.count){
+        [defaults setObject:Mdata forKey:@"M_ARRAY"];
+    }
+    
+    if(self.subTables.count){
+        [defaults setObject:Sdata forKey:@"S_ARRAY"];
+    }
+    
+    [defaults synchronize];
     /*
 	[defaults setObject:self.alermManager.alermObjects
 				 forKey:@"ALERM_OBJECTS"];
@@ -74,19 +100,22 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    /*
     	NSLog(@"データロード");
     self.subTables = [[NSMutableArray alloc]init];
-    
-    NSMutableArray *loadArray = [[NSMutableArray alloc]init];
+    self.masterTables = [[NSMutableArray alloc]init];
     
 	// 前回の状態を復元
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSData *data = [defaults objectForKey:@"LOAD_ARRAY"];
-    loadArray = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-	if (loadArray) {
-		[self.subTables arrayByAddingObjectsFromArray:loadArray];
-	}
+    NSData *Mdata = [defaults objectForKey:@"M_ARRAY"];
+    NSData *Sdata = [defaults objectForKey:@"S_ARRAY"];
+    
+    self.masterTables = [NSKeyedUnarchiver unarchiveObjectWithData:Mdata];
+    if(Sdata){
+        self.subTables = [NSKeyedUnarchiver unarchiveObjectWithData:Sdata];
+    }
 	[defaults synchronize];
+     */
 }
 
 @end

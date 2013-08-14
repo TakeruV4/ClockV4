@@ -26,7 +26,6 @@
 		00212BE81775B71C00224459 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00212BE71775B71C00224459 /* DetailViewController.m */; };
 		00212BF01775B8A200224459 /* SubTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00212BEF1775B8A200224459 /* SubTableView.m */; };
 		00212BFB1776CA5F00224459 /* CustumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00212BFA1776CA5F00224459 /* CustumCell.m */; };
-		009A128D1789A98500294447 /* MasterCustumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 009A128C1789A98500294447 /* MasterCustumCell.xib */; };
 		009A12901789A9CD00294447 /* MasterCustumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 009A128F1789A9CD00294447 /* MasterCustumCell.m */; };
 /* End PBXBuildFile section */
 
@@ -62,7 +61,6 @@
 		00212BEF1775B8A200224459 /* SubTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubTableView.m; sourceTree = "<group>"; };
 		00212BF91776CA5F00224459 /* CustumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustumCell.h; sourceTree = "<group>"; };
 		00212BFA1776CA5F00224459 /* CustumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustumCell.m; sourceTree = "<group>"; };
-		009A128C1789A98500294447 /* MasterCustumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterCustumCell.xib; sourceTree = "<group>"; };
 		009A128E1789A9CD00294447 /* MasterCustumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterCustumCell.h; sourceTree = "<group>"; };
 		009A128F1789A9CD00294447 /* MasterCustumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterCustumCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,7 +128,6 @@
 				00212BCC1775B71C00224459 /* Supporting Files */,
 				00212BF91776CA5F00224459 /* CustumCell.h */,
 				00212BFA1776CA5F00224459 /* CustumCell.m */,
-				009A128C1789A98500294447 /* MasterCustumCell.xib */,
 				009A128E1789A9CD00294447 /* MasterCustumCell.h */,
 				009A128F1789A9CD00294447 /* MasterCustumCell.m */,
 				0014858A177DE2EF00A04BEB /* DetailViewController.h */,
@@ -210,7 +207,6 @@
 				00212BDC1775B71C00224459 /* Default-568h@2x.png in Resources */,
 				00212BDF1775B71C00224459 /* MainStoryboard_iPhone.storyboard in Resources */,
 				00212BE21775B71C00224459 /* MainStoryboard_iPad.storyboard in Resources */,
-				009A128D1789A98500294447 /* MasterCustumCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

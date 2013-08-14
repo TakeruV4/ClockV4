@@ -9,6 +9,7 @@
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 #import "MasterCustumCell.h"
+#import "CustumCell.h"
 
 @interface MasterViewController () {
     NSMutableArray *_objects;
@@ -29,6 +30,8 @@
         self.clearsSelectionOnViewWillAppear = NO;
         self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
     }
+    
+
     [super awakeFromNib];
 }
 
@@ -49,6 +52,27 @@
     self.singleTap.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:self.singleTap];
     
+    NSLog(@"データロード");
+	// アラームを管理するマネージャを作成
+	//alermManager = [[AlermManager alloc] init];
+    
+	// 前回の状態を復元
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *Mdata = [defaults objectForKey:@"M_ARRAY"];
+    NSData *Sdata = [defaults objectForKey:@"S_ARRAY"];
+    
+    if(Mdata){
+        self.appDelegate.masterTables = [NSKeyedUnarchiver unarchiveObjectWithData:Mdata];
+        NSDate *dt = [[NSDate alloc]init];
+        dt = [self.appDelegate.masterTables objectAtIndex:1];
+        NSLog(@"復元１のラベル %@",dt);
+    }
+    
+    if(Sdata){
+        self.appDelegate.subTables = [NSKeyedUnarchiver unarchiveObjectWithData:Sdata];
+    }
+    [defaults synchronize];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,6 +83,15 @@
 
 - (void)insertNewObject:(id)sender
 {
+    //データ保存用
+    if (!self.appDelegate.masterTables) {
+        NSLog(@"オブジェクト作成");
+        self.appDelegate.masterTables = [[NSMutableArray alloc] init];
+    }else{
+        NSLog(@"オブジェクト作成しない");
+    }
+    [self.appDelegate.masterTables insertObject:[NSDate date] atIndex:0];
+    /*
     if (!_objects) {
         NSLog(@"オブジェクト作成");
         _objects = [[NSMutableArray alloc] init];
@@ -66,11 +99,12 @@
         NSLog(@"オブジェクト作成しない");
     }
     [_objects insertObject:[NSDate date] atIndex:0];
+     */
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     //サブテーブル作成時にnullを追加
     NSLog(@"null 追加");
-    NSLog(@"master  subTables %d",self.appDelegate.subTables.count);
+    NSLog(@"masterTables %d",self.appDelegate.masterTables.count);
     [self.appDelegate.subTables insertObject:[NSNull null] atIndex:indexPath.row];
     NSLog(@"master  subTables %d",self.appDelegate.subTables.count);
 }
@@ -84,14 +118,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    //return _objects.count;
+    return self.appDelegate.masterTables.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell2" forIndexPath:indexPath];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    /*
+    CustumCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell2"];
+    //cell.selectionStyle = UITableViewCellSelectionStyleNone;
     //NSDate *object = _objects[indexPath.row];
     
     UISwitch *masterSwitch = [[UISwitch alloc]init];
@@ -112,7 +147,17 @@
             tf.delegate = self;//delegateをセット
         }
     }
-     
+    */
+    
+    MasterCustumCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MasterCustumCell"];
+    for (UIView* view in cell.contentView.subviews) {
+        NSString *cl = view.class;
+        NSLog(@"class name: %@",cl);
+        if ([view isKindOfClass:NSClassFromString(@"UITextField")]) {
+            UITextField *tf = (UITextField*)view;
+            tf.delegate = self;//delegateをセット
+        }
+    }
     /*
     NSString *reuseIdentifier = @"CellID";
     
@@ -181,7 +226,9 @@ shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)strin
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_objects removeObjectAtIndex:indexPath.row];
+        //データ保存用
+        [self.appDelegate.masterTables removeObjectAtIndex:indexPath.row];
+        //[_objects removeObjectAtIndex:indexPath.row];
         NSLog(@"master  subTables %d",self.appDelegate.subTables.count);
         if(self.appDelegate.subTables.count >= indexPath.row){
             NSLog(@"delete");
@@ -242,11 +289,16 @@ shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)strin
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    NSLog(@"遷移");
     if(!self.editing){
+        NSLog(@"1");
         if ([[segue identifier] isEqualToString:@"showDetail"]) {
+            NSLog(@"2");
             NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
             NSLog(@"indexpath.row : %d",indexPath.row);
-            NSDate *object = _objects[indexPath.row];
+            //データ保存用
+            NSDate *object = self.appDelegate.masterTables[indexPath.row];
+            //NSDate *object = _objects[indexPath.row];
             //[[segue destinationViewController] setDetailItem:object];
             [[segue destinationViewController] setDetailItem:indexPath.row];
         }

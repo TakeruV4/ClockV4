@@ -106,30 +106,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="pfI-pl-SMl" customClass="MasterCustumCell">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="MasterCustumCell" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MasterCustumCell" id="pfI-pl-SMl" customClass="MasterCustumCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Group1" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="axT-a8-1TY">
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="86" id="0As-sQ-uvX"/>
-                                                <constraint firstAttribute="height" constant="30" id="Fzc-x7-jst"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="22"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <constraints>
-                                    <constraint firstItem="axT-a8-1TY" firstAttribute="leading" secondItem="pfI-pl-SMl" secondAttribute="leading" constant="41" id="CxG-pC-4uP"/>
-                                    <constraint firstItem="axT-a8-1TY" firstAttribute="centerY" secondItem="pfI-pl-SMl" secondAttribute="centerY" type="default" id="b2w-uh-9rp"/>
-                                </constraints>
                                 <connections>
-                                    <segue destination="21" kind="push" identifier="showDetail" id="hDS-9I-Ir5"/>
+                                    <segue destination="21" kind="push" identifier="showDetail" id="9J0-MV-VdC"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell2" id="psh-3N-YIM">
@@ -177,6 +163,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="DatePickerViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DatePickerViewController.h"/>
             <relationships>
+                <relationship kind="action" name="commitButtonClicked:"/>
                 <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
             </relationships>
         </class>
@@ -188,14 +175,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </class>
         <class className="MasterCustumCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterCustumCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="masterSwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="masterTextField" candidateClass="UITextField"/>
-            </relationships>
         </class>
         <class className="MasterViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterViewController.h"/>
             <relationships>
+                <relationship kind="action" name="longPressAction:" candidateClass="UILongPressGestureRecognizer"/>
                 <relationship kind="outlet" name="tf" candidateClass="UITextField"/>
             </relationships>
         </class>
@@ -209,6 +193,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="hDS-9I-Ir5"/>
+        <segue reference="9J0-MV-VdC"/>
     </inferredMetricsTieBreakers>
 </document>

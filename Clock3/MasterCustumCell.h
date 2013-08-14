@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MasterCustumCell : UITableViewCell
+@interface MasterCustumCell : UITableViewCell<NSCoding>{
+    UITextField *cellText;
+    NSString *str;
+}
+@property (nonatomic) BOOL MasterSwitch;
+@property (nonatomic) NSString* str;
 
-@property(weak,nonatomic) IBOutlet UISwitch *masterSwitch;
-@property(weak,nonatomic) IBOutlet UITextField *masterTextField;
 
 @end
